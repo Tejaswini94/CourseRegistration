@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js" type="application/javascript"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="http://getbootstrap.com/dist/js/bootstrap.min.js"></script>
+    <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="course.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+
+</head>
+<body data-ng-app="COURSE">
+<h1 align="center">University of xyz</h1>
+<div data-ng-controller="COURSECATLOG">
+<div>
+    <p class="bg-primary" style="font-size: 30px;">Welcome Tejaswini Pulivarthi!
+        <i class="fa fa-shopping-cart" aria-hidden="true" style="float: right;" data-ng-click="getCartInfo()" id="rc_image" data-ng-class="{'verified fa fa-shopping-cart':varified_rc_doc==1 }"></i>
+    </p>
+</div>
+<br><br><br>
+<div style="margin: auto;
+    width: 50%;
+    border: 3px solid green;
+    padding: 60px;">
+    <div align="center"><h2>Search for Courses</h2></div>
+    <br>
+    <div align="center" class="form-inline" >
+        <select class="form-control">
+            <option>choose a term</option>
+            <option>2017 Summer semester</option>
+            <option>2017 Fall semester</option>
+            <option>2018 Spring semester</option>
+
+        </select>
+        &nbsp; &nbsp;
+        <select class="form-control">
+            <option>choose course career</option>
+            <option>undergraduate</option>
+            <option>Graduate</option>
+        </select>
+
+    </div>
+    <br><br>
+    <button name="search" class="btn btn-primary" data-ng-click="getDept()" style="float: right;">GetCourses</button>
+</div>
+    <br><br><br>
+    <div align="center">
+        <div id="div" style="display:none;">
+<h3>View ListofSubjects</h3>
+    <table id="ul" class="table table-responsive" style="width:50%;">
+        <tr><th>SubjectCode</th><th>SubjectDescription</th></tr>
+    <tr ng-repeat="x in subject" class="bg-primary">
+        <td>
+        <a href=''  data-ng-click="getCourse(x)" style="color: white">
+           {{x.subcode}}
+        </a></td>
+        <td>{{x.subdes}}</td>
+    </tr>
+    </table>
+        </div>
+<div id="div1" style="display:none;">
+    <table><tr><td><h3>CourseAdvancedSearch</h3></td><td>&nbsp;</td><td><button name="search" class="btn btn-primary" data-ng-click="getDept()">Back</button></td></tr></table>
+    <table id="table" class="table table-responsive" style="width:50%;">
+        <tr id="tr"><th>CourseRegistrationNO</th><th>CourseTitle</th><th>Subject</th><th>Credits</th><th>SeatsAvailabilty</th><th>CourseTimings</th></tr>
+        <tr ng-repeat="y in cou"   class="bg-primary">
+            <td>
+            <a href=''  data-ng-click="getCoursedet(y)" style="color: white">
+                {{y.crn}}
+            </a>
+            </td>
+            <td>{{y.ct}}</td>
+            <td>{{y.des1}}</td>
+            <td>{{y.credits}}</td>
+            <td>{{y.sa}}</td>
+            <td>{{y.md}}</td>
+        </tr>
+    </table>
+</div>
+        <div id="div2" style="display:none;">
+            <table><tr><td><h3>CourseAdvancedSearch</h3></td><td>&nbsp;</td><td><button name="search" class="btn btn-primary" data-ng-click="getDept()">Back</button></td></tr></table>
+            <table ng-repeat="z in coud" id="table2" class="table table-responsive" style="width:50%;">
+        <tr><th>AdvanceCouseSearch</th><th>Details</th></tr>
+        <tr><td class="bg-primary">Subject</td><td class="table-warning">{{z.des}}</td></tr>
+        <tr><td class="bg-primary">CourseTitle</td><td class="table-warning">{{z.ct}}</td></tr>
+        <tr><td class="bg-primary">Faculty</td><td class="table-warning">{{z.fa}}</td></tr>
+        <tr><td class="bg-primary">Location</td><td class="table-warning">{{z.campus}}</td></tr>
+        <tr><td class="bg-primary">Seats Available</td><td class="table-warning">{{z.seat}}</td></tr>
+        <tr><td class="bg-primary">NoOfSeats</td><td class="table-warning">{{z.seatsno}}</td></tr>
+        <tr><td class="bg-primary">TotalSeats</td><td class="table-warning">{{z.TotalnoSeats}}</td></tr>
+        <tr><td class="bg-primary">WaitList</td><td class="table-warning">{{z.wl}}</td></tr>
+           <tr align="center"> <td><button name="search1" class="btn btn-primary" data-ng-click="postCart(z)">AddToCart</button> &nbsp;
+                <button name="search2" class="btn btn-primary" data-ng-click="dropCart(z)">DropFromCart</button></td></tr>
+
+    </table>
+</div>
+
+<div id="div3" style="display:none;">
+    <h3>Cart Info</h3>
+    <table class="table table-responsive" style="width:50%;" >
+        <tr><th>Subject</th><th>CourseRegistrationNO</th><th>InstructorName</th><th>Term</th><th>SeatAvailabile</th></tr>
+        <tr ng-repeat="m in cart" class="bg-primary">
+            <td> {{m.course}}</td>
+            <td>{{m.cr2}}</td>
+            <td>{{m.in}}</td>
+            <td>{{m.td}}</td>
+            <td>{{m.sa1}}</td>
+        </tr>
+    </table>
+</div>
+    </div>
+</div>
+</body>
+</html>
